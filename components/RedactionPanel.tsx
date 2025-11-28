@@ -474,7 +474,7 @@ const RedactionPanel: React.FC = () => {
                     </div>
                     
                     <div className="flex-1 grid grid-cols-2 divide-x divide-slate-700 min-h-[300px]">
-                        {/* Actual (Redacted) */}
+                        {/* Actual   (Redacted) */}
                         <div className="p-4 bg-slate-900/30 overflow-y-auto max-h-[500px]">
                             <h4 className="text-xs font-semibold text-slate-500 uppercase mb-2">Redacted Output (Actual)</h4>
                             {renderDiffPanel(comparisonDiff.actualChunks, 'actual')}
