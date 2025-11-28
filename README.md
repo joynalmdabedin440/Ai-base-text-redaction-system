@@ -1,4 +1,4 @@
-# 🛡️ RedactAI - Intelligent Cybersecurity Redaction System
+# RedactAI - Intelligent Cybersecurity Redaction System
 
 [![Live Demo](https://img.shields.io/badge/demo-live%20app-success?style=for-the-badge&logo=vercel)](https://moonlit-praline-99f1a1.netlify.app/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
@@ -9,13 +9,13 @@
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 **Access the application here:** [https://moonlit-praline-99f1a1.netlify.app/](https://moonlit-praline-99f1a1.netlify.app/)
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 RedactAI utilizes a **Progressive Redaction Pipeline** to minimize latency while maximizing accuracy.
 
@@ -60,7 +60,7 @@ redact-ai/
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 *   **Hybrid Detection Engine**: Combines deterministic regex logic with probabilistic LLM inference.
 *   **Zero-Latency Feedback**: Users see immediate redactions while the AI refines the output in the background.
@@ -73,7 +73,7 @@ redact-ai/
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 *   **Frontend**: React 19, TypeScript
 *   **Styling**: Tailwind CSS (Utility-first architecture)
@@ -84,7 +84,7 @@ redact-ai/
 
 ---
 
-## ⚙️ Local Development Setup
+##  Local Development Setup
 
 Follow these steps to spin up the development environment.
 
@@ -97,7 +97,7 @@ Follow these steps to spin up the development environment.
 ### 1. Installation
 
 ```bash
-git clone https://github.com/your-username/redact-ai.git
+git clone https://github.com/joynalmdabedin440/Ai-base-text-redaction-system.git
 cd redact-ai
 npm install
 ```
@@ -121,7 +121,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ---
 
-## 🔮 Roadmap
+##  Roadmap
 
 *   [ ] **PDF/OCR Support**: Ingest scanned documents using Tesseract.js before passing to the pipeline.
 *   [ ] **Custom Entity Training**: Allow users to define custom regex patterns via the UI.
@@ -130,7 +130,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome. Please follow standard Git flow:
 
@@ -142,6 +142,6 @@ Contributions are welcome. Please follow standard Git flow:
 
 ---
 
-## 📄 License
+##  License
 
 Distributed under the MIT License. See `LICENSE` for more information.
