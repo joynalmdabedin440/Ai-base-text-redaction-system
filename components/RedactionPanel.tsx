@@ -105,7 +105,7 @@ const RedactionPanel: React.FC = () => {
 
     try {
       // ---------------------------------------------------------
-      // STEP 2: AI REDACTION (Gemini)
+      // STEP 2: AI REDACTION 
       // ---------------------------------------------------------
       const aiEntities = await extractEntities(inputText, highAccuracyMode);
       
