@@ -1,144 +1,147 @@
 # 🛡️ RedactAI - Intelligent Cybersecurity Redaction System
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/react-v18.2.0-blue)
-![Gemini API](https://img.shields.io/badge/Powered%20by-Gemini%202.5%20Flash-orange)
-![Status](https://img.shields.io/badge/status-Hackathon%20Submission-green)
+[![Live Demo](https://img.shields.io/badge/demo-live%20app-success?style=for-the-badge&logo=vercel)](https://moonlit-praline-99f1a1.netlify.app/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![React](https://img.shields.io/badge/react-v19.2.0-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![Gemini API](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-orange?style=for-the-badge&logo=google)](https://ai.google.dev/)
 
-**RedactAI** is a cutting-edge privacy protection tool designed for the **Cybersecurity Hackathon**. It leverages the power of **Google Gemini AI** combined with high-precision regex algorithms to automatically detect and redact sensitive information from unstructured text data while preserving readability and context.
-
----
-
-## 🚀 Key Features
-
-*   **Hybrid Detection Engine**: Combines **Generative AI (Gemini 2.5/3.0)** for context-aware entities (Names, Locations) with **Regex** for structured data (IPs, Emails, Credit Cards).
-*   **Progressive Redaction**: Delivers instant results via local processing while the AI performs deep analysis in the background.
-*   **Dual Redaction Modes**:
-    *   **Mask Mode**: Replaces sensitive data with entity placeholders (e.g., `[PERSON]`, `[DATE]`).
-    *   **Remove Mode**: Cleanly excises data and collapses whitespace for a seamless reading experience.
-*   **Accuracy Evaluation Suite**:
-    *   Upload "Ground Truth" (Expected Output) files to test system performance.
-    *   **Levenshtein Similarity Scoring**: Mathematically quantifies the accuracy of the redaction.
-    *   **Visual Diff Comparison**: Side-by-side view highlighting exact mismatches between actual and expected output.
-*   **Comprehensive Entity Support**: Detects PERSON, LOCATION, EMAIL, IP_ADDRESS, PHONE, CREDIT_CARD, DATE_TIME, and URL.
+**RedactAI** is a high-performance privacy protection engine built for the **Cybersecurity Hackathon**. It employs a hybrid architecture, orchestrating **Google Gemini** for semantic entity recognition and **optimized Regex patterns** for structured data validation. This ensures maximum recall and precision when redacting sensitive information from unstructured text streams.
 
 ---
 
-## 📸 Screenshots
+## 🚀 Live Demo
 
-| **Workspace Dashboard** | **Accuracy Evaluation** |
-|:---:|:---:|
-| ![Workspace Dashboard](https://via.placeholder.com/600x350?text=Workspace+Dashboard+Preview) | ![Evaluation Mode](https://via.placeholder.com/600x350?text=Accuracy+Diff+Preview) |
-| *Real-time redaction and entity visualization* | *Side-by-side diff comparison with ground truth* |
+**Access the application here:** [https://moonlit-praline-99f1a1.netlify.app/](https://moonlit-praline-99f1a1.netlify.app/)
+
+---
+
+## 🏗️ System Architecture
+
+RedactAI utilizes a **Progressive Redaction Pipeline** to minimize latency while maximizing accuracy.
+
+```mermaid
+graph TD
+    A[Input Text] --> B{Local Processing}
+    B -->|Fast Path| C[Regex Engine]
+    C --> D[Immediate Redaction UI]
+    B -->|Async Path| E[Gemini AI Model]
+    E -->|Semantic Extraction| F[Entity Resolver]
+    C --> G[Merge Strategy]
+    F --> G
+    G --> H[Final Deduplicated Output]
+```
+
+1.  **Layer 1 (Fast Path)**: Immediate client-side regex evaluation for structured entities (IPs, Emails, Credit Cards, Dates). Latency: <10ms.
+2.  **Layer 2 (Deep Path)**: Asynchronous call to `gemini-2.5-flash` (or `gemini-3-pro` in High Accuracy mode) to identify context-heavy entities (Person Names, Generic Locations).
+3.  **Resolution Layer**: A merging algorithm consolidates overlapping indices, prioritizing the most specific entity type and ensuring no text is double-redacted.
+
+---
+
+## 📂 Project Structure
+
+```bash
+redact-ai/
+├── src/
+│   ├── components/       # UI Components (atomic design)
+│   │   ├── AccuracyMetric.tsx  # Levenshtein visualization
+│   │   ├── EntityTable.tsx     # Data grid for entities
+│   │   └── RedactionPanel.tsx  # Main business logic container
+│   ├── services/
+│   │   └── geminiService.ts    # AI API abstraction layer
+│   ├── utils/
+│   │   └── textUtils.ts        # Core algo (LCS, Regex, Normalization)
+│   ├── types.ts          # TypeScript interfaces & Enums
+│   ├── App.tsx           # Root component
+│   └── index.tsx         # Entry point
+├── public/
+├── README.md
+└── package.json
+```
+
+---
+
+## ✨ Key Features
+
+*   **Hybrid Detection Engine**: Combines deterministic regex logic with probabilistic LLM inference.
+*   **Zero-Latency Feedback**: Users see immediate redactions while the AI refines the output in the background.
+*   **Evaluation Suite (Ground Truth)**:
+    *   **Levenshtein Distance Algorithm**: Quantifies the edit distance between the Redacted Output and a user-uploaded Golden Master (Expected Output).
+    *   **Longest Common Subsequence (LCS) Diff**: Visualizes character-level discrepancies (over-redaction vs under-redaction).
+*   **Dual-Mode Operation**:
+    *   **Masking**: Replaces entities with tokens (e.g., `[PERSON]`).
+    *   **Removal**: Excises text and normalizes whitespace.
 
 ---
 
 ## 🛠️ Technology Stack
 
-*   **Frontend**: React.js (TypeScript)
-*   **Styling**: Tailwind CSS
-*   **AI Engine**: Google Gemini API (`@google/genai` SDK)
-*   **Visualization**: Recharts (for accuracy graphs)
+*   **Frontend**: React 19, TypeScript
+*   **Styling**: Tailwind CSS (Utility-first architecture)
+*   **AI Integration**: Google GenAI SDK (`@google/genai`)
+*   **Data Visualization**: Recharts
 *   **Icons**: Lucide React
-*   **Diffing Algorithm**: Custom Longest Common Subsequence (LCS) implementation
+*   **Build Tool**: Parcel / Webpack (via environment)
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Local Development Setup
 
-Follow these steps to run RedactAI locally.
+Follow these steps to spin up the development environment.
 
 ### Prerequisites
 
-*   **Node.js** (v16 or higher)
-*   **npm** or **yarn**
-*   **Google Gemini API Key** (Get one at [Google AI Studio](https://aistudio.google.com/))
+*   Node.js v16+
+*   npm or yarn
+*   Google Gemini API Key
 
-### 1. Clone the Repository
+### 1. Installation
 
 ```bash
 git clone https://github.com/your-username/redact-ai.git
 cd redact-ai
-```
-
-### 2. Install Dependencies
-
-```bash
 npm install
-# or
-yarn install
 ```
 
-### 3. Configure API Key
+### 2. Environment Configuration
 
-Create a `.env` file in the root directory and add your Google API key.
+Create a `.env` file in the root directory.
 
 ```env
-# .env
-REACT_APP_GEMINI_API_KEY=your_actual_api_key_here
+# Required for AI features
+API_KEY=your_google_gemini_api_key
 ```
-*(Note: If using Vite, prefix with `VITE_`, e.g., `VITE_API_KEY`)*
 
-### 4. Run the Application
+### 3. Execution
 
 ```bash
 npm start
-# or
-yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ---
 
-## 📖 Usage Guide
+## 🔮 Roadmap
 
-### Workspace Tab
-1.  **Input Text**: Paste text directly or upload a `.txt` file.
-2.  **Configuration**:
-    *   **Mode**: Choose "Replace" (Mask) or "Remove".
-    *   **Accuracy**: Toggle "High Accuracy" to use the stronger `Gemini 3.0 Pro` model (slower but more precise) or keep "Standard" for `Gemini 2.5 Flash`.
-3.  **Process**: Click "Run Redaction Engine". Regex results appear instantly; AI results refine the output shortly after.
-4.  **Review**: Check the "Detected Entities" table to see exactly what was found.
-
-### Evaluation Tab
-1.  **Prerequisite**: Run a redaction in the Workspace first.
-2.  **Upload Ground Truth**: Upload the "Expected Output" text file that represents the perfect redaction.
-3.  **Test Accuracy**: Click the button to calculate the score.
-4.  **Analyze**:
-    *   **Pie Chart**: Shows the percentage match.
-    *   **Diff View**:
-        *   <span style="color: #ef4444">Red Highlight</span>: Text that is in your output but shouldn't be (Under-redaction or formatting error).
-        *   <span style="color: #10b981">Green Highlight</span>: Text that was expected but is missing (Over-redaction).
-
----
-
-## 🧪 Testing with Sample Data
-
-We have provided a sample dataset in the `samples/` folder (if available) or you can use the default text loaded in the app.
-
-**Example Input:**
-> John Smith called from (212) 555-1234 on 12/05/2024 regarding the breach.
-
-**Expected Output (Mask Mode):**
-> [PERSON] called from [PHONE_NUMBER] on [DATE_TIME] regarding the breach.
+*   [ ] **PDF/OCR Support**: Ingest scanned documents using Tesseract.js before passing to the pipeline.
+*   [ ] **Custom Entity Training**: Allow users to define custom regex patterns via the UI.
+*   [ ] **Batch Processing**: Enable bulk upload of `.txt` files for parallel processing.
+*   [ ] **Edge Function Migration**: Move the API call to a serverless edge function to hide the API key in production.
 
 ---
 
 ## 🤝 Contributing
 
-1.  Fork the repository.
-2.  Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4.  Push to the branch (`git push origin feature/AmazingFeature`).
-5.  Open a Pull Request.
+Contributions are welcome. Please follow standard Git flow:
+
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
 ---
 
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-**Built with ❤️ for the Cybersecurity Hackathon**
