@@ -33,9 +33,9 @@ const extractionSchema: Schema = {
 };
 
 /**
- * Extracts entities using Gemini.
+ * Extracts entities from the given text.
  * @param text The input text
- * @param highAccuracy If true, uses a stronger model (Gemini Pro)
+ * @param highAccuracy If true, uses a stronger model 
  */
 export const extractEntities = async (text: string, highAccuracy: boolean = false): Promise<DetectedEntity[]> => {
   if (!text || !text.trim()) return [];
@@ -68,7 +68,7 @@ export const extractEntities = async (text: string, highAccuracy: boolean = fals
     return data.entities || [];
 
   } catch (error) {
-    console.error("Gemini Extraction Error:", error);
+    console.error("Extraction Error:", error);
     // Return empty array instead of throwing to allow partial regex results to persist
     return []; 
   }

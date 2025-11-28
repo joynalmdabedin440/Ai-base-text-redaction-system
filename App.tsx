@@ -17,7 +17,7 @@ function App() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden sm:block text-xs text-slate-500 border border-slate-800 px-2 py-1 rounded">v1.0.0-beta</span>
+            <span className="hidden sm:block text-xs text-slate-500 border border-slate-800 px-2 py-1 rounded">Team Super Saiyans</span>
           </div>
         </div>
       </header>
@@ -38,8 +38,8 @@ function App() {
 
        <footer className="border-t border-slate-800 mt-12 py-8 bg-slate-900">
          <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-           <p>© 2024 RedactAI. Built for the Cybersecurity Hackathon.</p>
-           <p className="mt-2 text-xs">Powered by Gemini 2.5 Flash • React • Tailwind</p>
+           <p>© 2025 RedactAI. Built for the Cybersecurity Hackathon Presidency University.</p>
+           <p className="mt-2 text-xs"> • React • Tailwind</p>
          </div>
        </footer>
     </div>
