@@ -142,6 +142,6 @@ Contributions are welcome. Please follow standard Git flow:
 
 ---
 
-##  License
+##  Licensed 
 
 Distributed under the MIT License. See `LICENSE` for more information.
