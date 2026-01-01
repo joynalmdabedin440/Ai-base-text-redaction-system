@@ -33,7 +33,7 @@ graph TD
 
 1.  **Layer 1 (Fast Path)**: Immediate client-side regex evaluation for structured entities (IPs, Emails, Credit Cards, Dates). Latency: <10ms.
 2.  **Layer 2 (Deep Path)**: Asynchronous call to `gemini-2.5-flash` (or `gemini-3-pro` in High Accuracy mode) to identify context-heavy entities (Person Names, Generic Locations).
-3.  **Resolution Layer**: A merging algorithm consolidates overlapping indices, prioritizing the most specific entity type and ensuring no text is double-redacted.
+3.  **Resolution Layer**: A merging algorithm consolidates overlapping indices, prioritizing the most specific entity type and ensuring no text is double-redacted
 
 ---
 
